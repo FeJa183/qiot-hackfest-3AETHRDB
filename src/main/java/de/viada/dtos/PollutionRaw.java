@@ -1,6 +1,7 @@
 package de.viada.dtos;
 
 public class PollutionRaw {
+    private int stationId;
     private int pm1_0;
     private int pm2_5;
     private int pm10;
@@ -13,6 +14,14 @@ public class PollutionRaw {
     private int gt2_5;
     private int gt5_0;
     private int gt10um;
+
+    public int getStationId() {
+        return stationId;
+    }
+
+    public void setStationId(int stationId) {
+        this.stationId = stationId;
+    }
 
     public int getPm1_0() {
         return pm1_0;

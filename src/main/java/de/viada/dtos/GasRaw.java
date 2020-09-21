@@ -1,10 +1,19 @@
 package de.viada.dtos;
 
 public class GasRaw {
+    private int stationId;
     private double adc;
     private double nh3;
     private double oxidising;
     private double reducing;
+
+    public int getStationId() {
+        return stationId;
+    }
+
+    public void setStationId(int stationId) {
+        this.stationId = stationId;
+    }
 
     public double getAdc() {
         return adc;
