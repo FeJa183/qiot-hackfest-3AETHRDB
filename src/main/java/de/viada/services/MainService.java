@@ -1,8 +1,6 @@
 package de.viada.services;
 
-import de.viada.dtos.CoordinatesBean;
-import de.viada.dtos.GasRaw;
-import de.viada.dtos.GasTelementry;
+import de.viada.dtos.*;
 import io.quarkus.scheduler.Scheduled;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -48,13 +46,14 @@ public class MainService {
             coordinatesBean.setLongitude(longitude);
         }
         System.out.println("Wir sind " + teamname);
-        GasRaw temp = this.sensorClientService.getGas();
+
+//        System.out.println(this.sensorClientService.getSerial());
 
         try {
-            temp.setStationId(temp.getStationId().replace("\u0000", ""));
-            System.out.println(temp.toString());
-            int response = this.dataHubClientService.register(temp.getStationId(), teamname, coordinatesBean.getLongitude(), coordinatesBean.getLatitude());
-            System.out.println(response);
+//            temp.setStationId(temp.getStationId().replace("\u0000", ""));
+//            System.out.println(temp.toString());
+            this.teamId = this.dataHubClientService.register("000000005937ef4b", teamname, coordinatesBean.getLongitude(), coordinatesBean.getLatitude());
+            System.out.println(this.teamId);
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println(ex.getMessage());
@@ -78,7 +77,7 @@ public class MainService {
         /**
          * Fetch data from Sensor
          */
-        try{
+        try {
             GasRaw gasRaw = this.sensorClientService.getGas();
             System.out.println(gasRaw.toString());
 
@@ -86,6 +85,16 @@ public class MainService {
 
             telemetryService.sendGas(gasTelementry.toJSONString());
         } catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        try {
+            PollutionRaw pollutionRaw = this.sensorClientService.getPollution();
+            System.out.println(pollutionRaw.toString());
+
+            PollutionTelemetry pollutionTelemetry = new PollutionTelemetry(pollutionRaw, this.teamId);
+            telemetryService.sendPollution(pollutionTelemetry.toJSONString());
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
 

@@ -19,4 +19,9 @@ public interface SensorClientService {
     @Path("/pollution")
     @Consumes(MediaType.APPLICATION_JSON)
     PollutionRaw getPollution();
+
+    @GET
+    @Path("/serial")
+    @Consumes(MediaType.APPLICATION_JSON)
+    String getSerial();
 }

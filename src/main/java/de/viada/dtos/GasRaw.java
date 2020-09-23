@@ -1,12 +1,12 @@
 package de.viada.dtos;
 
 public class GasRaw {
-    private String stationId;
     private double adc;
     private double nh3;
     private double oxidising;
     private double reducing;
     private String status;
+    private String stationId;
 
     public String getStationId() {
         return stationId;
@@ -59,7 +59,6 @@ public class GasRaw {
     @Override
     public String toString() {
         return "GasRaw{" +
-                "stationId='" + stationId + '\'' +
                 ", adc=" + adc +
                 ", nh3=" + nh3 +
                 ", oxidising=" + oxidising +

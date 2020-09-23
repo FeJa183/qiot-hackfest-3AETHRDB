@@ -1,5 +1,7 @@
 package de.viada.dtos;
 
+import com.fasterxml.jackson.databind.node.JsonNodeType;
+
 import java.time.Instant;
 
 public class GasTelementry {
@@ -12,17 +14,16 @@ public class GasTelementry {
         this.gasData = gasRaw;
         this.stationID = stationID;
         this.instant = Instant.now().toString();
-
-        System.out.println(this.instant);
     }
 
     public String toJSONString() {
+
         return "{" +
-                "stationID:" + stationID +
-                ",\"instant\":" + instant +
+                "\"stationId\":" + stationID +
+                ",\"instant\": \"" + instant + "\"" +
                 ",\"adc\":" + gasData.getAdc() +
                 ",\"nh3\":" + gasData.getNh3() +
-                ",\"oxidisiing\":" + gasData.getOxidising() +
+                ",\"oxidising\":" + gasData.getOxidising() +
                 ",\"reducing\":" + gasData.getReducing() +
                 '}';
     }
