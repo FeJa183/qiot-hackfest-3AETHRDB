@@ -1,10 +1,20 @@
 package de.viada.dtos;
 
+import java.time.Instant;
+
 public class GasTelementry {
 
     private int stationID;
     private String instant;
     private GasRaw gasData;
+
+    public GasTelementry(GasRaw gasRaw, int stationID) {
+        this.gasData = gasRaw;
+        this.stationID = stationID;
+        this.instant = Instant.now().toString();
+
+        System.out.println(this.instant);
+    }
 
     public double getAdc() {
         return gasData.getAdc();

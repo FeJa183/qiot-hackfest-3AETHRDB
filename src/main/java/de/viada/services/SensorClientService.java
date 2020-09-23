@@ -16,10 +16,10 @@ public interface SensorClientService {
     @GET
     @Path("/gas")
     @Consumes(MediaType.APPLICATION_JSON)
-    GasRaw gas();
+    GasRaw getGas();
 
     @GET
     @Path("/pollution")
     @Consumes(MediaType.APPLICATION_JSON)
-    PollutionRaw pollution();
+    PollutionRaw getPollution();
 }

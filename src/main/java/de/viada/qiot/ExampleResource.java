@@ -31,8 +31,8 @@ public class ExampleResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() throws Exception {
         LOG.info("Coordinates: " + coordinatesService.getCoordinates("Freie-Vogel-Straße 393 44269 Dortmund"));
-        LOG.info("Gas: " + sensorClientService.gas());
-        LOG.info("Pollution: " + sensorClientService.pollution());
+        LOG.info("Gas: " + sensorClientService.getGas());
+        LOG.info("Pollution: " + sensorClientService.getPollution());
         return "hello";
     }
 }
