@@ -9,9 +9,12 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+//import java.util.logging.Logger;
+import org.jboss.logging.Logger;
 
 @ApplicationScoped
 public class MainService {
+    private static final Logger LOG = Logger.getLogger(MainService.class);
 
     @ConfigProperty(name = "qiot.teamname")
     String teamname;
@@ -54,7 +57,7 @@ public class MainService {
         }
         System.out.println("Wir sind " + teamname);
 
-        System.out.println(this.sensorClientService.getSerial());
+//        System.out.println(this.sensorClientService.getSerial());
 
         try {
 //            temp.setStationId(temp.getStationId().replace("\u0000", ""));
@@ -62,20 +65,17 @@ public class MainService {
             this.teamId = this.dataHubClientService.register("000000005937ef4b", teamname, coordinatesBean.getLongitude(), coordinatesBean.getLatitude());
             System.out.println(this.teamId);
         } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println(ex.getMessage());
+            LOG.error(ex.getMessage());
         }
     }
 
     @PreDestroy
     public void unregister() {
-        System.out.println("Unregister");
         try {
-            this.dataHubClientService.unregister(30);
+            this.dataHubClientService.unregister(this.teamId);
             System.out.println("Unregister done");
         } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println(ex.getMessage());
+            LOG.error(ex.getMessage());
         }
     }
 
@@ -92,7 +92,7 @@ public class MainService {
 
             telemetryService.sendGas(gasTelementry.toJSONString());
         } catch (Exception ex){
-            ex.printStackTrace();
+            LOG.error(ex.getMessage());
         }
 
         try {
@@ -102,21 +102,7 @@ public class MainService {
             PollutionTelemetry pollutionTelemetry = new PollutionTelemetry(pollutionRaw, this.teamId);
             telemetryService.sendPollution(pollutionTelemetry.toJSONString());
         } catch (Exception ex) {
-            ex.printStackTrace();
+            LOG.error(ex.getMessage());
         }
-
-
-        //...do magic..
-
-        //PollutionRaw pollutionRaw = this.sensorClientService.pollution();
-        //System.out.println(pollutionRaw.toString());
-        //...do magic
-
-
-        /**
-         * Sende Daten an Datahub
-         */
-        //this.dataHubService.xy(gasTelemetry);
-        //this.dataHubService.yy(pollutionTelemetry);
     }
 }
