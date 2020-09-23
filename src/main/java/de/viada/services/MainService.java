@@ -33,6 +33,13 @@ public class MainService {
 
     @PostConstruct
     public void register() {
+        System.out.println(
+                "___________                     ____   ____.__            .___       \n" +
+                "\\__    ___/___ _____    _____   \\   \\ /   /|__|____     __| _/____   \n" +
+                "  |    |_/ __ \\\\__  \\  /     \\   \\   Y   / |  \\__  \\   / __ |\\__  \\  \n" +
+                "  |    |\\  ___/ / __ \\|  Y Y  \\   \\     /  |  |/ __ \\_/ /_/ | / __ \\_\n" +
+                "  |____| \\___  >____  /__|_|  /    \\___/   |__(____  /\\____ |(____  /\n" +
+                "             \\/     \\/      \\/                     \\/      \\/     \\/");
 //        this.dataHubClientService.register(System.getProperty('name'))
         CoordinatesBean coordinatesBean = null;
 
@@ -47,7 +54,7 @@ public class MainService {
         }
         System.out.println("Wir sind " + teamname);
 
-//        System.out.println(this.sensorClientService.getSerial());
+        System.out.println(this.sensorClientService.getSerial());
 
         try {
 //            temp.setStationId(temp.getStationId().replace("\u0000", ""));
