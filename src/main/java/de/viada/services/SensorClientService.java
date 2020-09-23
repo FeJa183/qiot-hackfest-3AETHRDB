@@ -6,18 +6,22 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.awt.*;
 
-@Path("http://192.168.45.92:5000")
-@RegisterRestClient()
+@RegisterRestClient(baseUri = "http://192.168.45.92:5000")
 public interface SensorClientService {
+
     @GET
     @Path("/gas")
     @Consumes(MediaType.APPLICATION_JSON)
-    GasRaw gas();
+    GasRaw getGas();
 
     @GET
     @Path("/pollution")
     @Consumes(MediaType.APPLICATION_JSON)
-    PollutionRaw pollution();
+    PollutionRaw getPollution();
+
+    @GET
+    @Path("/serial")
+    @Consumes(MediaType.APPLICATION_JSON)
+    String getSerial();
 }

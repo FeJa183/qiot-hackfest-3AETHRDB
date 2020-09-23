@@ -1,7 +1,6 @@
 package de.viada.dtos;
 
 public class PollutionRaw {
-    private int stationId;
     private int pm1_0;
     private int pm2_5;
     private int pm10;
@@ -14,12 +13,14 @@ public class PollutionRaw {
     private int gt2_5;
     private int gt5_0;
     private int gt10um;
+    private String status;
+    private String stationId;
 
-    public int getStationId() {
+    public String getStationId() {
         return stationId;
     }
 
-    public void setStationId(int stationId) {
+    public void setStationId(String stationId) {
         this.stationId = stationId;
     }
 
@@ -117,5 +118,33 @@ public class PollutionRaw {
 
     public void setGt10um(int gt10um) {
         this.gt10um = gt10um;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+    @Override
+    public String toString() {
+        return "PollutionRaw{" +
+                ", pm1_0=" + pm1_0 +
+                ", pm2_5=" + pm2_5 +
+                ", pm10=" + pm10 +
+                ", pm1_0_atm=" + pm1_0_atm +
+                ", pm2_5_atm=" + pm2_5_atm +
+                ", pm10_atm=" + pm10_atm +
+                ", gt0_3=" + gt0_3 +
+                ", gt0_5=" + gt0_5 +
+                ", gt1_0=" + gt1_0 +
+                ", gt2_5=" + gt2_5 +
+                ", gt5_0=" + gt5_0 +
+                ", gt10um=" + gt10um +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

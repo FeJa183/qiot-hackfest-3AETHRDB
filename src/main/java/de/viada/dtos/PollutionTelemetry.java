@@ -1,9 +1,18 @@
 package de.viada.dtos;
 
+import java.time.Instant;
+
 public class PollutionTelemetry {
     private int stationID;
     private String instant;
     private PollutionRaw pollutionData;
+
+    public PollutionTelemetry(PollutionRaw pollutionRaw, int teamId) {
+        this.pollutionData = pollutionRaw;
+        this.stationID = teamId;
+
+        this.instant = Instant.now().toString();
+    }
 
     public int getPm1_0() {
         return pollutionData.getPm1_0();
@@ -116,4 +125,27 @@ public class PollutionTelemetry {
     public void setInstant(String instant) {
         this.instant = instant;
     }
+
+    public String toJSONString() {
+        return "{" +
+                "\"stationId\":" + this.stationID +
+                ",\"instant\": \"" + instant +"\"" +
+                ",\"pm1_0\":" + pollutionData.getPm1_0() +
+                ",\"pm2_5\":" + pollutionData.getGt2_5() +
+                ",\"pm10\":" + pollutionData.getPm10() +
+                ",\"pm1_0_atm\":" + pollutionData.getPm1_0_atm() +
+                ",\"pm2_5_atm\":" + pollutionData.getPm2_5_atm() +
+                ",\"pm10_atm\":" + pollutionData.getPm10_atm() +
+                ",\"gt0_3um\":" + pollutionData.getGt0_3() +
+                ",\"gt0_5um\":" + pollutionData.getGt0_5() +
+                ",\"gt1_0um\":" + pollutionData.getGt1_0() +
+                ",\"gt2_5um\":" + pollutionData.getGt2_5() +
+                ",\"gt5_0um\":" + pollutionData.getGt5_0() +
+                ",\"gt10um\":" + pollutionData.getGt10um() +
+                '}';
+    }
+
+
+
+
 }

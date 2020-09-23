@@ -4,6 +4,7 @@ import de.viada.dtos.CoordinatesBean;
 import de.viada.qiot.ExampleResource;
 import org.jboss.logging.Logger;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -11,6 +12,7 @@ import javax.json.JsonReader;
 import java.io.InputStream;
 import java.net.URL;
 
+@ApplicationScoped
 public class CoordinatesService {
 
     private static final Logger LOG = Logger.getLogger(CoordinatesService.class);

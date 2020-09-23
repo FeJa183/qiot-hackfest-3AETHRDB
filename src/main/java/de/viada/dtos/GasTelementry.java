@@ -1,10 +1,32 @@
 package de.viada.dtos;
 
+import com.fasterxml.jackson.databind.node.JsonNodeType;
+
+import java.time.Instant;
+
 public class GasTelementry {
 
     private int stationID;
     private String instant;
     private GasRaw gasData;
+
+    public GasTelementry(GasRaw gasRaw, int stationID) {
+        this.gasData = gasRaw;
+        this.stationID = stationID;
+        this.instant = Instant.now().toString();
+    }
+
+    public String toJSONString() {
+
+        return "{" +
+                "\"stationId\":" + stationID +
+                ",\"instant\": \"" + instant + "\"" +
+                ",\"adc\":" + gasData.getAdc() +
+                ",\"nh3\":" + gasData.getNh3() +
+                ",\"oxidising\":" + gasData.getOxidising() +
+                ",\"reducing\":" + gasData.getReducing() +
+                '}';
+    }
 
     public double getAdc() {
         return gasData.getAdc();

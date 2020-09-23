@@ -4,6 +4,8 @@ public class CoordinatesBean {
     private double longitude;
     private double latitude;
 
+    public CoordinatesBean() {}
+
     public double getLongitude() {
         return longitude;
     }
@@ -18,5 +20,13 @@ public class CoordinatesBean {
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+    @Override
+    public String toString() {
+        return "CoordinatesBean{" +
+                "longitude=" + longitude +
+                ", latitude=" + latitude +
+                '}';
     }
 }
