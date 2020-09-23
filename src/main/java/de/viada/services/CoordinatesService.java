@@ -1,10 +1,9 @@
 package de.viada.services;
 
 import de.viada.dtos.CoordinatesBean;
-import io.quarkus.scheduler.Scheduled;
-import io.quarkus.scheduler.Scheduler;
+import de.viada.qiot.ExampleResource;
+import org.jboss.logging.Logger;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -12,8 +11,9 @@ import javax.json.JsonReader;
 import java.io.InputStream;
 import java.net.URL;
 
-@ApplicationScoped
 public class CoordinatesService {
+
+    private static final Logger LOG = Logger.getLogger(CoordinatesService.class);
 
     public CoordinatesBean getCoordinates(String address)
             throws Exception {
@@ -33,20 +33,20 @@ public class CoordinatesService {
             }
         }
         query.append("&format=json&addressdetails=1");
-        //LOGGER.debug("Query:" + query);
+        LOG.debug("Query:" + query);
         URL url = new URL(query.toString());
         try (InputStream is = url.openStream();
              JsonReader reader = Json.createReader(is)) {
             JsonArray jsonArray = reader.readArray();
-            //LOGGER.debug(jsonArray.toString());
+            LOG.debug(jsonArray.toString());
             JsonObject jsonObject = jsonArray.getJsonObject(0);
-            //LOGGER.debug(jsonObject.toString());
+            LOG.debug(jsonObject.toString());
             coordinates = new CoordinatesBean();
             coordinates.setLongitude(Double
                     .parseDouble(jsonObject.getString("lon")));
             coordinates.setLatitude(Double
                     .parseDouble(jsonObject.getString("lat")));
-            //LOGGER.debug(coordinates.toString());
+            LOG.debug(coordinates.toString());
         }
         return coordinates;
     }

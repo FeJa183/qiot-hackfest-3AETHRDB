@@ -33,15 +33,7 @@ public class MainService {
     public void trigger() throws Exception {
         System.out.println("Tigger fired.");
 
-        /**
-         * Check if coordinates already set. if not -> get them!
-         */
-        if(coordinatesBean == null) {
-            coordinatesBean = this.coordinatesService.getCoordinates("Viada Gmbh");
-            System.out.println("Coordinates Bean Set => " + coordinatesBean.toString());
-        } else {
-            System.out.println("Coordinates Bean Load => " + coordinatesBean.toString());
-        }
+
 
         /**
          * Fetch data from Sensor
