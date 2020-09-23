@@ -30,9 +30,6 @@ public class ExampleResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() throws Exception {
-        LOG.info("Coordinates: " + coordinatesService.getCoordinates("Freie-Vogel-Straße 393 44269 Dortmund"));
-        LOG.info("Gas: " + sensorClientService.getGas());
-        LOG.info("Pollution: " + sensorClientService.getPollution());
         return "hello";
     }
 }
