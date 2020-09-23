@@ -30,6 +30,8 @@ public class MainService {
     @RestClient
     private DataHubClientService dataHubClientService;
     private int teamId;
+    @Inject
+    private TelemetryService telemetryService;
 
     @PostConstruct
     public void register() {
@@ -76,10 +78,16 @@ public class MainService {
         /**
          * Fetch data from Sensor
          */
-        GasRaw gasRaw = this.sensorClientService.getGas();
-        System.out.println(gasRaw.toString());
+        try{
+            GasRaw gasRaw = this.sensorClientService.getGas();
+            System.out.println(gasRaw.toString());
 
-        GasTelementry gasTelementry = new GasTelementry(gasRaw, this.teamId);
+            GasTelementry gasTelementry = new GasTelementry(gasRaw, this.teamId);
+
+            telemetryService.sendGas(gasTelementry.toJSONString());
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
 
 
         //...do magic..

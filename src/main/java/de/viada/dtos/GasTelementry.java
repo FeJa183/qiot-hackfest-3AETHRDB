@@ -16,6 +16,17 @@ public class GasTelementry {
         System.out.println(this.instant);
     }
 
+    public String toJSONString() {
+        return "{" +
+                "stationID:" + stationID +
+                ",\"instant\":" + instant +
+                ",\"adc\":" + gasData.getAdc() +
+                ",\"nh3\":" + gasData.getNh3() +
+                ",\"oxidisiing\":" + gasData.getOxidising() +
+                ",\"reducing\":" + gasData.getReducing() +
+                '}';
+    }
+
     public double getAdc() {
         return gasData.getAdc();
     }
