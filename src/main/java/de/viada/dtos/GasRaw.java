@@ -8,6 +8,9 @@ public class GasRaw {
     private String status;
     private String stationId;
 
+
+    public GasRaw() {}
+
     public String getStationId() {
         return stationId;
     }

@@ -16,6 +16,9 @@ public class PollutionRaw {
     private String status;
     private String stationId;
 
+    public PollutionRaw() {
+    }
+
     public String getStationId() {
         return stationId;
     }

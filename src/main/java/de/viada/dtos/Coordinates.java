@@ -1,10 +1,10 @@
 package de.viada.dtos;
 
-public class CoordinatesBean {
+public class Coordinates {
     private double longitude;
     private double latitude;
 
-    public CoordinatesBean() {}
+    public Coordinates() {}
 
     public double getLongitude() {
         return longitude;
@@ -24,7 +24,7 @@ public class CoordinatesBean {
 
     @Override
     public String toString() {
-        return "CoordinatesBean{" +
+        return "Coordinates{" +
                 "longitude=" + longitude +
                 ", latitude=" + latitude +
                 '}';

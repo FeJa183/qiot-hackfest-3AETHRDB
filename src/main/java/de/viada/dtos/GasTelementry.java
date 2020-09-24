@@ -10,6 +10,9 @@ public class GasTelementry {
     private String instant;
     private GasRaw gasData;
 
+    public GasTelementry() {
+    }
+
     public GasTelementry(GasRaw gasRaw, int stationID) {
         this.gasData = gasRaw;
         this.stationID = stationID;

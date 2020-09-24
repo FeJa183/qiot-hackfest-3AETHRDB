@@ -15,6 +15,9 @@ import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.reactive.messaging.mqtt.MqttMessage;
 
+/**
+ * Service to send processed Telemetry Data to DataHub.
+ */
 @ApplicationScoped
 public class TelemetryService {
 
@@ -26,13 +29,19 @@ public class TelemetryService {
     @Channel("pollution")
     Emitter<String> pollutionEmitter;
 
+    /**
+     * Sends processed Gas Telemetry to the DataHub.
+     * @param data String
+     */
     public void sendGas(String data) {
-        System.out.println(data);
-        CompletionStage<Void> t = gasEmitter.send(data);
+        gasEmitter.send(data);
     }
 
+    /**
+     * Sends processed Pollution Telemetry to the DataHub.
+     * @param data String
+     */
     public void sendPollution(String data) {
-        System.out.println("Send" +  data);
         pollutionEmitter.send(data);
     }
 }
