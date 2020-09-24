@@ -1,7 +1,6 @@
 package de.viada.services;
 
-import de.viada.dtos.CoordinatesBean;
-import de.viada.qiot.ExampleResource;
+import de.viada.dtos.Coordinates;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -12,14 +11,23 @@ import javax.json.JsonReader;
 import java.io.InputStream;
 import java.net.URL;
 
+/**
+ * Service to retreive Coordinates from external Service.
+ */
 @ApplicationScoped
 public class CoordinatesService {
 
     private static final Logger LOG = Logger.getLogger(CoordinatesService.class);
 
-    public CoordinatesBean getCoordinates(String address)
+    /**
+     * Retreive Coordinates from external Service by Adress.
+     * @param address String
+     * @return Coordinates
+     * @throws Exception
+     */
+    public Coordinates getCoordinates(String address)
             throws Exception {
-        CoordinatesBean coordinates = null;
+        Coordinates coordinates = null;
         StringBuffer query = null;
         String[] split = null;
         split = address.split(" ");
@@ -43,7 +51,7 @@ public class CoordinatesService {
             LOG.debug(jsonArray.toString());
             JsonObject jsonObject = jsonArray.getJsonObject(0);
             LOG.debug(jsonObject.toString());
-            coordinates = new CoordinatesBean();
+            coordinates = new Coordinates();
             coordinates.setLongitude(Double
                     .parseDouble(jsonObject.getString("lon")));
             coordinates.setLatitude(Double

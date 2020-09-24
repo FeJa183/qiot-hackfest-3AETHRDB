@@ -7,6 +7,9 @@ public class PollutionTelemetry {
     private String instant;
     private PollutionRaw pollutionData;
 
+    public PollutionTelemetry() {
+    }
+
     public PollutionTelemetry(PollutionRaw pollutionRaw, int teamId) {
         this.pollutionData = pollutionRaw;
         this.stationID = teamId;
