@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Service to retreive Data from Hardware/Pi
  */
-@RegisterRestClient(baseUri = "qiot-sensor-service:5000")
+@RegisterRestClient(baseUri = "http://qiot-sensor-service:5000")
 public interface SensorClientService {
 
     /**
