@@ -3,7 +3,6 @@ package de.viada.services;
 import de.viada.dtos.GasRaw;
 import de.viada.dtos.PollutionRaw;
 import de.viada.dtos.SerialRaw;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import javax.ws.rs.*;

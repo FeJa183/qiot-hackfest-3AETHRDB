@@ -133,19 +133,19 @@ public class PollutionTelemetry {
         return "{" +
                 "\"stationId\":" + this.stationID +
                 ",\"instant\": \"" + instant +"\"" +
-                ",\"pm1_0\":" + pollutionData.getPm1_0() +
-                ",\"pm2_5\":" + pollutionData.getGt2_5() +
-                ",\"pm10\":" + pollutionData.getPm10() +
-                ",\"pm1_0_atm\":" + pollutionData.getPm1_0_atm() +
-                ",\"pm2_5_atm\":" + pollutionData.getPm2_5_atm() +
-                ",\"pm10_atm\":" + pollutionData.getPm10_atm() +
                 ",\"gt0_3um\":" + pollutionData.getGt0_3() +
                 ",\"gt0_5um\":" + pollutionData.getGt0_5() +
                 ",\"gt1_0um\":" + pollutionData.getGt1_0() +
                 ",\"gt2_5um\":" + pollutionData.getGt2_5() +
                 ",\"gt5_0um\":" + pollutionData.getGt5_0() +
                 ",\"gt10um\":" + pollutionData.getGt10um() +
-                '}';
+                ",\"pm1_0\":" + pollutionData.getPm1_0() +
+                ",\"pm2_5\":" + pollutionData.getPm2_5() +
+                ",\"pm10\":" + pollutionData.getPm10() +
+                ",\"pm1_0_atm\":" + pollutionData.getPm1_0_atm() +
+                ",\"pm2_5_atm\":" + pollutionData.getPm2_5_atm() +
+                ",\"pm10_atm\":" + pollutionData.getPm10_atm() +
+                "}";
     }
 
 
