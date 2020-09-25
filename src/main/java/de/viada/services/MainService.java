@@ -86,7 +86,7 @@ public class MainService {
             this.teamId = this.dataHubClientService.register(serialRaw.getStationID(), teamname, coordinates.getLongitude(), coordinates.getLatitude());
         } catch (Exception ex) {
             LOG.error("Could not register at the DataHub.");
-//            throw new IllegalStateException("Could not register at the DataHub.");
+            throw new IllegalStateException("Could not register at the DataHub.");
         }
     }
 
