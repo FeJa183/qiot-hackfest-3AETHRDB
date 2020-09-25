@@ -78,6 +78,8 @@ public class MainService {
             coordinates.setLongitude(longitude);
         }
 
+        LOG.info(coordinates.toString());
+
         /**
          * Try to retreive the hardware-serial and register at the DataHub.
          */
@@ -86,7 +88,8 @@ public class MainService {
             this.teamId = this.dataHubClientService.register(serialRaw.getStationID(), teamname, coordinates.getLongitude(), coordinates.getLatitude());
         } catch (Exception ex) {
             LOG.error("Could not register at the DataHub.");
-//            throw new IllegalStateException("Could not register at the DataHub.");
+            LOG.error(ex.getMessage());
+            throw new IllegalStateException("Could not register at the DataHub.");
         }
     }
 

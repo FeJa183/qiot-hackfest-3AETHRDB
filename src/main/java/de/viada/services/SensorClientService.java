@@ -3,7 +3,6 @@ package de.viada.services;
 import de.viada.dtos.GasRaw;
 import de.viada.dtos.PollutionRaw;
 import de.viada.dtos.SerialRaw;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import javax.ws.rs.*;
@@ -12,7 +11,8 @@ import javax.ws.rs.core.MediaType;
 /**
  * Service to retreive Data from Hardware/Pi
  */
-@RegisterRestClient(baseUri = "http://qiot-sensor-service:5000")
+//@RegisterRestClient(baseUri = "http://qiot-sensor-service:5000")
+    @RegisterRestClient(baseUri = "http://192.168.45.92:5000")
 public interface SensorClientService {
 
     /**
